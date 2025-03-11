@@ -1,0 +1,60 @@
+*** Orderbook management ***
+
+Primary goal is to copy the limit order book from the venues into the trading system
+
+Book builder will be in charge of gathering the pricing and categorizing them, essentially gathering price updates from gateways (gateway IN, quotes) and sorting them by price, venue, volume (etc.)
+
+Every venue will send its own order books, overall goal of the trading systems order book is to build a book taking into account data from multiple books from multiple venues
+
+
+Order book considerations:
+
+    receives price updates and organizes them in a way that makes stategies job more efficient
+    
+    Two options for building book, 
+        - sending entire book, very consuming, inefficient, especially with large exchanges
+        - incremental price updates, faster and more efficient
+    
+    insertion: adding new entries into order book, inserting new order should be O(1) or O(log n)
+    amendment: will use order ID to seek the order in book, should be same complexity as insertion
+    cancelation: using order ID, cancelation allows orders to be withdrawn from the book
+
+    order-based book: critical component of the trading system
+
+
+
+    data structure to model the order book must ensure the following:
+        
+        1. constant look-up, fast quantity update: 
+
+            - we need constant look-up time for order ID's,
+            - must retrieve orders with best price rapidly
+            - linear price retrieval is not possible, must be constant or logarithmic
+
+        2. iteration in order of prices:
+            
+            - when buying or selling large quantites, we may need to find many orders to reach a certain volume, 
+              starting with the best price, then second best and so on until desired trade volume is satisfied
+            
+        3. retrieving best bid and ask in constant time:
+            
+            - mainly working with best prices, we need data structure that can return best orders for bids and offers
+            
+
+        * We should probably use std::vector or std::unordered_map for order ID's
+
+        
+        since most changes occure near the inside of the book, employing a vector for each price level will result on average, the fastest price look-up time
+
+        usually desired price is just a few levels from books interior, linear search is simpler on branch predictor, optimizer and cache, than binary search
+
+
+
+
+                                                
+        
+        
+
+
+
+

@@ -1,0 +1,33 @@
+*** Progress ***
+
+
+
+Macros: 
+
+    - compiler optimization macros, can play a significant role, check out if there are other built-ins for gcc or clang
+    - clang should support most of gcc built-ins? 
+
+Lock free concurrency:
+
+    - lock free queues will play significant role in the engine
+    - what is a lock free queue? -> circular fifo data structure that supports atomic reading and writing -> prevents need for mutexes, locks or other locking mechanisms
+    - lock free vs wait free?
+    - Are atomics really faster? What is really going on with atomic operations?
+    - Found a good start online, will expand and build upon this 
+    - Explore single producer single consumer vs multi-producer multi-consumer lock free queues
+    - 3rd party libraries faster? Boost::lockfree::queue -> how does this perform in reality? 
+
+Namespaces: 
+
+    - organizing functionality and utilities into different namespaces, will lead to cleaner and well organized code base
+    - 
+
+
+
+Orderbook: 
+    
+    - following a common outline for multi-order type order book
+
+    - seperate ModifyOrder class is crucial, simply adding member function in original order class to modify would maintain order position in the order queue
+    - we need some representation of matched order
+        trade objects -> simply an aggregation of 2 tradeinfo objects, one for the ask and one for bid (bid == ask -> trade)

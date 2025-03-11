@@ -1,0 +1,18 @@
+*** ORDER MANAGEMENT SYSTEM ***
+
+OMS gathers orders submitted from the strategy
+
+tracks order life cycle, (creation, execution, amendment, cancelation and rejection)
+
+if an order is invalid, OMS may reject it, (too large quanity, wrong direction, erroneous prices, excessive outstanding position, or order type not handled by particular exchange)
+
+when OMS handles invalid trades, order does not leave the trading system, this allows the strategy to react faster to invalid trades, instead of waiting for the exchange to reject the order
+
+
+
+
+
+
+
+
+

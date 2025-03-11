@@ -1,0 +1,171 @@
+*** NETWORKING ***
+
+Network: grouping of hosts which require similar connectivity
+    - hosts on a network share the same IP address space
+
+Repeater: regenerates signals along the path from one machine to another over the network
+
+Hub: simply multiport repeaters
+    - scaling communication between additional hosts
+    - everyone receives everyone's data
+
+Bridge: sit between hub connected hosts, 
+    - only have two ports, each for one connection to a hub
+    - bridges learn which hosts are on each side
+    - contains packets only to their relative networks
+
+Switch: device that facilitates communication within a network, (like a combination of hub and bridge)
+    - multiple ports
+    - learns which hosts are on each port
+    - can transmit data from one port to another, (per port basis), unlike a hub that transmits data to all machines connected to it
+
+Router: faciliate communication between networks
+    - connect switches to establish connection between networks
+    - primary task it to route data packets between different networks
+    - provides a traffic control point (security, filtering, redirecting)
+    - they learn which networks they are connected to, forming a routing table
+
+Gateway: each host's way out of their local network
+    - interface IP address of the router that is connected to the switch of your network
+
+    ex. machine IP address is 172.16.20.33
+        default gateway is 172.16.20.1
+
+
+
+
+Open systems interconnection (OSI) model: conceptual framework used to describe the functions of a networking system
+    
+    each of the 7 layers only communicate with the adjacent OSI model layer, don't communicate with all other layers
+
+
+
+Network interface card (NIC):
+    - can have more than one port, each responsible for establishing connection with a network (could also have multiple NIC's on machine)
+    - port type relates to type of connection it can handle
+
+Network speed:
+    - standard supported network speed is single-lane 100 Gbps, 25 and 10 signaling, anything else is comprised of multiple parallel lanes 
+
+
+
+
+
+HOW SWITCHES WORK:  
+
+    - primary function is to transfer packets from its input to its output
+
+    Handles two kinds of operations:
+
+        - configuring packet forwarding -> naive switches just observe media access control (MAC) addresses on a port and switch traffic to that port, (mac addresses are similar to IP address but denote address of machine within a local network)
+        - forward/filter decisions -> switches read configuration tables to forward packets accordingly and remove packets when necessary
+
+    tables are generated on the fly as new forwarding entries are required (learns about machines on network)
+
+
+    parser: component within switches
+        - understand and define protocols used by the network switch, they have different rules and logic for interpreting different network protocols (Ethernet, TCP, UDP, IP, etc.)
+        - read/analyze packet headers deducing info like source and destination addresses, type of protocol, priority etc.
+        - queue management -> determine how packets should be handled, placing them in different queues based on priority, type or destination
+
+
+Meta-data: packet header fields, information about the data
+
+
+SWITCH QEUEING:
+
+    When there is too much incoming data, time to process data is slower than rate that switch is receiving data ---> BUFFER IS NEEDED!!!
+
+    buffer: stores data waiting to be processed
+
+    switch receives packet on input port, looks up destination (output port) and places packet in the output port queue
+
+    large data streams can saturate output port queue thus leading to severe latency 
+
+    data can also be lost if buffer is full (packet drops) - if market data packets drop, we can't build order book that accurately reflects market prices, interupting trading
+
+    
+
+    HEAD-OF-LINE (HOL) BLOCKING:
+        
+        packets are held up in queue by a packet about to leave the queue, increasing latency
+
+        if many packets are blocked in a queue, switch will keep processing other packets in another output port queue, resulting in packets being received out of order 
+
+
+
+When a switch receives a frame, it sends out an ARP (address resolution protocol) request to all machines on LAN, "whos IP address is x.x.x.x" and the correct machine responds with mac address then
+switch places mac address in mac address table so it can forward future data to correct port without sending ARP request to entire network.
+
+
+
+
+PROTOCOLS:
+
+    sets the rule of communication between two devices over a network
+
+    ETHERNET FOR HFT COMMS:
+ 
+        - specifies how machines can recoginze eachother and send and receive data on same LAN or WAN
+        - highly reliable, resistant to noise, fast and secure
+
+    IPv4 AS NETWORK LAYER:
+        
+        - IP protocol operate at OSI model network layer, TCP/UDP operate at internet layer (higher) 
+        - 32 bit logical addressing
+        - utilizes best effort delivery (no promise of delivery)
+
+        3 different addressing modes:
+
+            unicast mode:
+                - only one host receives data, 32-bit IP address of target host is stored in destination address field
+
+            broadcast mode:
+                - packet is addressed to all hosts in a network segment, 
+                - unnecessary overhead by sending to all machines that may not need it
+                
+            multicast mode:
+                - hybrid of previous two modes
+                - neither one nor all hosts on network
+                - destination address field in this packet has IP address like 224.x.x.x indicating a specific group of hosts within a particular network
+
+    UDP/TCP FOR TRANSPORT LAYER:
+        
+        - non-essential data, such as market data feeds are often transmitted using UDP to reduce latency and overhead
+        - critical data utilizes TCP/IP protocol to ensure transfer of data
+
+        TCP: 
+            - RELIABLE and provides an end-to-end (E2E) byte stream over the network (ensures packet delivery) (more overhead)
+            - connection oriented protocol
+            - must establish handshake to start communicating
+            - checks errors and has error recovery
+
+        UDP:
+            - datagram-oriented protocol, used for broadcast and multicast types of network transmission
+            - does not ensure packet delivery 
+            - connectionless protocol
+            - no mechanism for checking errors -> faster, less overhead
+            - checks errors and discards packets when there is a problem
+
+        
+        trend is leaning towards UDP for orders (UFO) which allows us to send orders faster
+
+
+
+
+
+
+
+
+
+
+
+    
+        
+
+
+
+    
+
+    
+

@@ -1,0 +1,61 @@
+<<<<<<<<<<  CHAPTER1  >>>>>>>>>>>>
+
+    
+Central Limit Order Book (CLOB):
+    
+    The CLOB is a transparent system matching orders between participants.
+
+
+Alternate Trading Systems:
+
+    have much less regulation in comparison to traditional exchanges (they don't have to be transparent)   
+
+
+Dark Pools: 
+
+    can handle speed, meet automation requirements, reduced fees
+    
+    one of most common type of alternate trading systems (ATS)
+
+    30 dark pools represent 25% of trading volume in United States
+
+    order info is hidden (price and volume) - order book is not advertised , deal details are posted after
+
+
+Requirements for HFT players:
+
+    focus on single-core throughput in most cases
+
+    Exchange proximity - (co-location in US)
+
+
+Tick-to-trade : response time to send an order responding to incoming market data
+
+Depth : number of price levels for a given asset,
+    (ex. the book is deep, when there are manhy levels (layers) for a given asset)
+
+    
+
+
+
+
+        
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+

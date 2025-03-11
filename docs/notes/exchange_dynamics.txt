@@ -1,0 +1,26 @@
+*** EXCHANGE DYNAMICS *** 
+
+Exchange: server accepting connections from trading systems and running the matching engine algorithm on the order book
+
+main features of an exchange:
+    
+    listings: corporations that are traded by market participants
+    matching engine: fully automated matching algorithm that matches buy and sell orders to faciliate transactions
+    post-trade: ensuring payment, settlement and reconciliation
+    market data: trade prices, volumes, firm announcements/filings, etc.
+    market participants: clearing and trading members, each with their own set of rules governing their actions
+    regulation:
+
+
+After order is sent to exchange the following happens:
+
+    - when an order is sent to an exchange, the order will be routed to to queues depending on the asset class and instrument, each queue is created for one given price and one given symbol
+    - matching engine handles the order one at a time
+    - if there is a change in the order book, the change will be communicated to all market particpants (all updates are sent to clearing/post-trade)
+
+
+    
+
+
+ 
+

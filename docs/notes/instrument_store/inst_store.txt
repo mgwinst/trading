@@ -1,0 +1,7 @@
+DATA MODEL: INSTRUMENT STORE
+
+Instrument: (stock, bond, ETF, option, ...) core element of trading algo:
+    definition, pricing inputs, market data, etc.
+
+Instrument Store: owns all instruments
+

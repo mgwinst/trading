@@ -1,0 +1,21 @@
+*** FAST PROTOCOL *** 
+
+The FAST protocol = high speed FIX protocol
+
+Market Data is transmitted from exchanges or feed handlers to market participants via the FAST protocol, which operates on top of UDP
+
+Designed to use as little bandwidth as possible, hence it makes use of variety of compression techniques, 
+
+    compression techniques:
+        
+        delta updates:
+            - offers just changes, such as current price and previous price, instead of transferring all stocks and their related data
+
+        variable-length encoding:
+            - encodes each word to compress the raw data, although this increases processing complexity
+
+
+Decoding must be done with shortest possible delay
+
+UDP is used to transmit FAST messages
+

@@ -1,0 +1,8 @@
+Branch prediction:
+
+    #define LIKELY(x) __builtin_expect(!!(x), 1)
+    #define UNLIKELY(x) __builtin_expect(!!(x), 0)
+
+    specifies condition x that is likely to be true or untrue, c++20 might have something standardized, check it out.
+
+

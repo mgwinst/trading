@@ -1,0 +1,49 @@
+*** FIX PROTOCOL *** 
+
+FIX - Financial Information eXchange protocol
+
+created in 1992 to handle securites between fidelity and salomon brothers on an international real-time exchange
+
+FIX is a string-based protocol, which implies that people can read it
+
+Since FIX is string-based, parsers can take some time to process the stream, there are faster protocols including binary protocols
+
+
+Two kinds of messages: 
+    - administrative notifications that don't include any financial information
+    - messages sent by the program to get pricing updates and orders
+
+    contents of these messages take the form of key-value pairs
+
+    predefined tags serve as keys, each tag number that corresponds to a particular characteristic
+    values are associated with these tags
+
+
+Protocols for FIX communication:
+    
+    trading system requires two connections:
+        
+        - one to receive price updates
+        - one to place orders
+
+    Price changes:
+        
+        - first feed to get is price updates, price updates -> orders from other market participants
+        - trading system initiates a connection with the exchange to get a connection established and subscribe to liquidity updates
+
+        Trading system = initiator
+        Exchange = acceptor 
+
+    Orders: 
+
+        - second feed that trading system needs is communication with the exchange for the order side
+        - once communication is established, the initiator will send orders to the exchange, if exchange needs to send updates regarding an order, it will use this channel of communication
+
+
+
+    Important takeaway: 
+        
+        by initiating a trading session with an exchange, the trading system will send orders to the venue, order communications will be delivered to the exchange while
+        this active trading session is open. The exchange will use FIX messages to transmit the status of these orders
+        
+

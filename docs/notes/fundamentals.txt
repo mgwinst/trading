@@ -1,0 +1,84 @@
+<<<<<<<<<<  CHAPTER1  >>>>>>>>>>>>
+
+    
+Central Limit Order Book (CLOB):
+    
+    The CLOB is a transparent system matching orders between participants.
+
+
+Alternate Trading Systems:
+
+    have much less regulation in comparison to traditional exchanges (they don't have to be transparent)   
+
+
+Dark Pools: 
+
+    can handle speed, meet automation requirements, reduced fees
+    
+    one of most common type of alternate trading systems (ATS)
+
+    30 dark pools represent 25% of trading volume in United States
+
+    order info is hidden (price and volume) - order book is not advertised , deal details are posted after
+
+
+Requirements for HFT players:
+
+    focus on single-core throughput in most cases
+
+
+Asset Classes: 
+
+    stocks, bonds, futures, options, fx, crypto
+
+
+Tick-by-tick data and data distribution: 
+
+    thousands of ticks (security price changes from one order to another) are generated per trading day on liquid marketplaces, which make up high frequency data 
+
+
+
+    Two categories of market data distribution:
+
+        Volatility clustering: large changes follow large changes, small changes follow small changes 
+        Long-range dependency: (long memory) refers to the pace at which statistical dependence between two sites decays as the time interval or spatial distance between them increases
+
+
+Liquidity rebates:
+
+    most exchanges use "maker-taker model" -> investors and traders who place limit orders often earn a small rebate for providing Liquidity    
+                                              Those who place market orders pay small fee for taking liquidity from market and depleting limit order books
+
+
+Market making:
+
+    market taker/maker 
+
+        
+
+
+        
+
+    
+
+
+        
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+

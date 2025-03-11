@@ -1,0 +1,49 @@
+Order-driven markets: 
+
+    continuous
+    call
+
+    orders are submitted into a common limit order book, some person or algorithm is matching these orders and thus facilitating execution of trade
+
+    1) orders are submitted
+    2) trades are arranged
+    
+    ^^ continuous market, these happen all the time, constantly cycling and orders will remain outstanding until matched or cancelled
+    ^^ call auction or call market, each of the two happen in an interval and one after the other, not constantly cycling
+
+    Order precedence - which orders get executed first? 
+        price
+        volume
+        time (queue)
+        ...
+
+
+
+Order types:
+
+    Limit order - specify a quantity and price (ex. will buy 500 shares below price 40), this order will be submitted to the limit order book and will remain in the book until matched or cancelled
+    Market order - specify quantity; to execute immediately at best available price
+
+
+Limit order markets: 
+
+    relation to liquidity:
+
+        patient traders - passive, use limit orders (providing liquidity)
+        impatient traders - aggressive, use market orders (removing liquidity, depleting limit order book, causing price fluctuation)
+
+        
+Dealer markets: 
+
+    all trades happen through a centralized intermediary, when buying or selling, you do not always deal with an opposing trader on other
+    side of market, instead you are dealing with a market appointed dealer or market maker, who is obliged to buy or sell at a given price
+
+    unlike order-driven markets, prices are fixed by a dealer 
+    quotes a bid and ask price (valid up to certain number of shares) must negotiate of exceeding volume
+
+
+
+
+
+
+

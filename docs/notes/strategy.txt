@@ -1,0 +1,14 @@
+*** Strategy Component *** 
+
+Strategy is the trading systems brain, algorithm that represents trading concept is implemented here
+
+two main components:
+    
+    signal: focuses on generating signals, 
+
+    execution: takes care of handling response from the market, decides what to do given certain response from market
+
+
+
+
+

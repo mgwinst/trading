@@ -1,0 +1,16 @@
+memory pools -> avoid dynamic memory allocations
+
+    by building custom memory pools, we can control the allocation/deallocation mechanisms, leading to more performance
+
+    "memory pool" usually refers to a pool of objects fo a certain type
+
+
+    process specfic memory pools can lead to better performance for few reasons: 
+
+        reduced fragmentation -> we can allocate fixed size memory blocks, perfectly suited to the objects we manage
+        
+        improved locality of reference -> improve cache locality
+
+        reduced synchronization overhead -> accessing system wide memory pool requires sync primitives to ensure thread safety, leads to contention (read more about this later)
+
+
