@@ -14,9 +14,9 @@ namespace utilities {
     private:
         std::vector<T> store;
         
-        std::atomic<size_t> next_read_index = {0};
-        std::atomic<size_t> next_write_index = {0};
-        std::atomic<size_t> num_elements = {0};
+        std::atomic<size_t> next_read_index {0};
+        std::atomic<size_t> next_write_index {0};
+        std::atomic<size_t> num_elements {0};
     
     public: 
         LockFreeQueue(std::size_t elems) : store(elems, T()) {}
