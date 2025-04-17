@@ -8,15 +8,16 @@
 
 // single producer single consumer lock free queue
 
-namespace utilities {
+namespace common {
+
     template<typename T>
     class LockFreeQueue final {
     private:
         std::vector<T> store;
         
-        std::atomic<size_t> next_read_index {0};
-        std::atomic<size_t> next_write_index {0};
-        std::atomic<size_t> num_elements {0};
+        std::atomic<std::size_t> next_read_index {0};
+        std::atomic<std::size_t> next_write_index {0};
+        std::atomic<std::size_t> num_elements {0};
     
     public: 
         LockFreeQueue(std::size_t elems) : store(elems, T()) {}
@@ -32,12 +33,12 @@ namespace utilities {
         }
     
         auto update_write_index() noexcept {
-            next_write_index = (next_write_index + 1) % store.size(); // implement circular buffer by modding size of store
+            next_write_index = (next_write_index + 1) % store.size();
             ++num_elements;
         }
     
-        auto get_next_read() const noexcept -> const T* {
-            return (next_read_index == next_write_index) ? nullptr : &store[next_read_index];
+        const T* get_next_read() const noexcept {
+            return (size() ? &store[next_read_index] : nullptr);
         }
     
         auto update_read_index() noexcept {
@@ -46,7 +47,7 @@ namespace utilities {
             --num_elements;
         }
     
-        auto get_num_elements() const noexcept {
+        auto size() const noexcept {
             return num_elements.load();
         }
     
