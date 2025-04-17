@@ -1,0 +1,7 @@
+What are some useful building blocks that we have learned about?
+
+- Thread creation and thread affinity
+- Lockfree queue
+- memory pools
+- logging
+
