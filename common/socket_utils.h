@@ -25,10 +25,10 @@ namespace common {
     std::string get_iface_ip(const std::string& iface);
     bool set_non_blocking(int fd);
     bool set_no_delay(int fd);
-    bool set_so_time_stamp(int fd);
+    bool set_so_time_stamp(int fd); // so prefix == socket option
     bool would_block();
-    bool set_mcast_ttl(int fd, int ttl);
-    bool set_ttl(int fd, int ttl);
+    bool set_TTL(int fd, int ttl);
+    bool set_mcast_TTL(int fd, int ttl);
     bool join(int fd, const std::string& ip, const std::string& iface, int port);
     int create_socket(Logger& logger, const std::string& t_ip, const std::string& iface,
         int port, bool is_udp, bool is_blocking, bool is_listening, int ttl, bool needs_so_timestamp);

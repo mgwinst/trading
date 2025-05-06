@@ -1,0 +1,5 @@
+LIST OF THINGS TO LOOK AT LATER
+
+kernel bypassing
+hardware timestamping for packet arrival
+

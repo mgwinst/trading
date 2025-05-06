@@ -33,8 +33,30 @@ namespace common {
     bool set_no_delay(int fd) {
         int one = 1;
         return (setsockopt(fd, IPPROTO_TCP, TCP_NODELAY,
-            reinterpret_cast<void *>(&one), sizeof(one)) != -1);
+            reinterpret_cast<void*>(&one), sizeof(one)) != -1);
     }
+
+    bool set_so_time_stamp(int fd) {
+        int one = 1;
+        return (setsockopt(fd, SOL_SOCKET, SO_TIMESTAMP,
+            reinterpret_cast<void*>(&one), sizeof(one)) != -1);
+    }
+
+    bool would_block() {
+        return (errno == EWOULDBLOCK || errno == EINPROGRESS);
+    }
+
+    bool set_TTL(int fd, int ttl) {
+        return (setsockopt(fd, IPPROTO_IP, IP_TTL,
+            reinterpret_cast<void*>(&ttl), sizeof(ttl)) != -1);
+    }
+
+    bool set_mcast_TTL(int fd, int mcast_ttl) {
+        return (setsockopt(fd, IPPROTO_IP, IP_MULTICAST_TTL,
+            reinterpret_cast<void*>(&mcast_ttl), sizeof(mcast_ttl)) != -1);
+    }
+
+    
 
     
 
