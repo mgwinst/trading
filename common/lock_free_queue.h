@@ -8,7 +8,7 @@
 
 // single producer single consumer lock free queue
 
-namespace common {
+namespace Common {
 
     template<typename T>
     class LockFreeQueue final {

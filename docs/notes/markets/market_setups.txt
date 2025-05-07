@@ -3,7 +3,7 @@ Order-driven markets:
     continuous
     call
 
-    orders are submitted into a common limit order book, some person or algorithm is matching these orders and thus facilitating execution of trade
+    orders are submitted into a Common limit order book, some person or algorithm is matching these orders and thus facilitating execution of trade
 
     1) orders are submitted
     2) trades are arranged

@@ -4,4 +4,5 @@ What are some useful building blocks that we have learned about?
 - Lockfree queue
 - memory pools
 - logging
+- socket utilities
 

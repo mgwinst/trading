@@ -1,6 +1,6 @@
 *** THREADS *** 
 
 
-setting thread affinity -> pinning certain critical path threads to specific cores to prevent context switching, cache misses
+setting thread affinity -> pinning certain critical path threads to specific cores to reduce context switching, cache misses
 
         

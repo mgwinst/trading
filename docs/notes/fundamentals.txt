@@ -15,7 +15,7 @@ Dark Pools:
 
     can handle speed, meet automation requirements, reduced fees
     
-    one of most common type of alternate trading systems (ATS)
+    one of most Common type of alternate trading systems (ATS)
 
     30 dark pools represent 25% of trading volume in United States
 

@@ -6,7 +6,7 @@
 
 #include "macros.h"
 
-namespace common {
+namespace Common {
 
     template <typename T>
     class MemoryPool final {

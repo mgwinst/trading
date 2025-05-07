@@ -26,7 +26,7 @@ Namespaces:
 
 Orderbook: 
     
-    - following a common outline for multi-order type order book
+    - following a Common outline for multi-order type order book
 
     - seperate ModifyOrder class is crucial, simply adding member function in original order class to modify would maintain order position in the order queue
     - we need some representation of matched order

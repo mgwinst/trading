@@ -3,7 +3,7 @@
 #include <chrono>
 #include <ctime>
 
-namespace common {
+namespace Common {
     using Nanos = int64_t;
     
     inline auto getCurrentNanos() noexcept {

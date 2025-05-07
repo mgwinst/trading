@@ -1,6 +1,6 @@
 #include "include/logger.h"
 
-using namespace common;
+using namespace Common;
 
 int main() {
     

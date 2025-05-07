@@ -8,7 +8,7 @@
 #include <sys/syscall.h>
 
 
-namespace common {
+namespace Common {
 
     inline auto set_thread_core(int core_id) noexcept {
         cpu_set_t cpuset; // cpuset bitmask

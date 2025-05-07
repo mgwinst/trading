@@ -9,7 +9,7 @@
 #include "lock_free_queue.h"
 #include "time_utils.h"
 
-namespace common {
+namespace Common {
 
     constexpr std::size_t LOG_QUEUE_SIZE = 8 * 1024 * 1024;
 
@@ -98,7 +98,7 @@ namespace common {
         
         ~Logger() {
             std::string time_str;
-            std::cerr << common::get_current_time_str(time_str) << " Flushing and closing Logger for " << log_file_name << '\n';
+            std::cerr << Common::get_current_time_str(time_str) << " Flushing and closing Logger for " << log_file_name << '\n';
 
             while (log_queue.size()) {
                 std::this_thread::sleep_for(std::chrono::seconds(1));
@@ -107,7 +107,7 @@ namespace common {
             logger_thread->join();
 
             log_file.close();
-            std::cerr << common::get_current_time_str(time_str) << " Logger for " << log_file_name << " exiting.\n";
+            std::cerr << Common::get_current_time_str(time_str) << " Logger for " << log_file_name << " exiting.\n";
         }
 
         Logger() = delete;
