@@ -23,8 +23,8 @@ namespace Common {
     constexpr int max_tcp_server_backlog = 1024; // max number of pending TCP connections
     
     struct SocketCfg {
-        std::string ip {};
-        std::string iface {};
+        std::string ip{};
+        std::string iface{};
         int port = -1;
         bool is_udp = false;
         bool is_listening = false;
@@ -32,7 +32,7 @@ namespace Common {
 
         // replace this using modern std::print, works for now
         auto to_string() const {
-            std::stringstream ss;
+            std::stringstream ss{};
             ss << "SocketCfg[ip: " << ip
             << " iface: " << iface
             << " port: " << port
@@ -135,12 +135,8 @@ namespace Common {
                 ASSERT(set_so_time_stamp(socket_fd), "set_so_timestamp() failed. errno: " + std::string{strerror(errno)});
         }
 
-        freeaddrinfo(result);
+        if (result) freeaddrinfo(result);
+
         return socket_fd;
     }
-}
-
-int main() {
-    auto ip_address = Common::get_iface_ip("lo");
-    std::cout << ip_address << '\n';
 }
