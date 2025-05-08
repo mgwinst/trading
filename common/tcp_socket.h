@@ -19,7 +19,7 @@ namespace Common {
 
         struct sockaddr_in socket_attrib_{};
         
-        std::function<void(TCPSocket* s, Nanos rx_time)> recv_callback = nullptr;
+        std::function<void(TCPSocket* s, Nanos rx_time)> recv_callback_ = nullptr;
 
         std::string time_str_;
         Logger& logger_;

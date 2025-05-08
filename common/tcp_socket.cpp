@@ -40,19 +40,35 @@ namespace Common {
             if (cmsg->cmsg_level == SOL_SOCKET && // message at the socket level
                 cmsg->cmsg_type == SCM_TIMESTAMP && // message is a timestamp
                 cmsg->cmsg_len == CMSG_LEN(sizeof(time_kernel))) { // length == cmsghdr + struct timeval, CMSG_LEN does same at CMSG_SPACE but strips padding
-                
-                }
-            
+                    memcpy(&time_kernel, CMSG_DATA(cmsg), sizeof(time_kernel));
+                    kernel_time = time_kernel.tv_sec * 1000000000 + time_kernel.tv_usec * 1000;
+            }
+
+            const auto user_time = getCurrentNanos();
+
+            logger_.log("%:% %() % read socket:% len:% utime:% ktime:% diff:%\n", __FILE__, __LINE__, __FUNCTION__,
+                Common::get_current_time_str(time_str_), socket_fd_, next_recv_valid_index_, user_time, kernel_time, (user_time - kernel_time));
+
+            recv_callback_(this, kernel_time); // look into this
         }
+
+        // non-blocking call to send data
+        if (next_send_valid_index_ > 0) {
+            const auto n = ::send(socket_fd_, outbound_data_.data(), next_send_valid_index_, MSG_DONTWAIT | MSG_NOSIGNAL); // POSIX send (::send)
+            logger_.log("%:% %() % send socket:% len:%\n", __FILE__, __LINE__, __FUNCTION__, Common::get_current_time_str(time_str_), socket_fd_, n);
+        }
+
+        // this is incorrect if (n < next_send_valid_index_), potential loss of data if partial send
+        // will support this later
+        next_send_valid_index_ = 0;
         
-        
-        
+        return (read_size > 0);
     }
 
-
-
-
-
-
+    // write outgoing data to the send buffers
+    void TCPSocket::send(const void* data, std::size_t len) noexcept {
+        memcpy(outbound_data_.data() + next_send_valid_index_, data, len);
+        next_send_valid_index_ += len;
+    }
 
 }
