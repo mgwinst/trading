@@ -34,7 +34,7 @@ namespace Common {
         void send_and_recv() noexcept;
 
         private:
-            auto add_to_epoll_list(TCPSocket* socket);
+            bool add_to_epoll_list(TCPSocket* socket);
 
     };
 
