@@ -31,3 +31,6 @@ Orderbook:
     - seperate ModifyOrder class is crucial, simply adding member function in original order class to modify would maintain order position in the order queue
     - we need some representation of matched order
         trade objects -> simply an aggregation of 2 tradeinfo objects, one for the ask and one for bid (bid == ask -> trade)
+
+
+
