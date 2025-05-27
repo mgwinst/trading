@@ -1,1 +1,1 @@
-Learning the electronic trading ecosystem.
+Learning about low latency electronic trading systems.
