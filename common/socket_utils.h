@@ -96,6 +96,12 @@ namespace Common {
         return (setsockopt(fd, IPPROTO_IP, IP_MULTICAST_TTL, reinterpret_cast<void*>(&mcast_ttl), sizeof(mcast_ttl)) == 0);
     }
 
+    /// Add / Join membership / subscription to the multicast stream specified and on the interface specified.
+    inline bool join(int fd, const std::string &ip) {
+        const ip_mreq mreq{{inet_addr(ip.c_str())}, {htonl(INADDR_ANY)}};
+        return (setsockopt(fd, IPPROTO_IP, IP_ADD_MEMBERSHIP, &mreq, sizeof(mreq)) != -1);
+    }
+
     [[nodiscard]] inline int create_socket(Logger& logger, const SocketCfg& socket_cfg) {
         std::string time_str{};
         const auto ip = socket_cfg.ip.empty() ? get_iface_ip(socket_cfg.iface) : socket_cfg.ip;
