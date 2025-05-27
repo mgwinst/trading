@@ -1,1 +1,1 @@
-This repo is a sandbox for learning the electronic trading ecosystem.
+Learning the electronic trading ecosystem.
